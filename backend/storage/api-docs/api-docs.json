@@ -1,0 +1,135 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Taling Externship API",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000/api/v1",
+            "description": "API Server"
+        }
+    ],
+    "paths": {
+        "/account/register": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "회원가입",
+                "operationId": "Register",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "title": "RegisterForm",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "user@example.com"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    },
+                                    "password_confirmation": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "회원가입 완료",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "처리 불가",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/account/login": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "로그인",
+                "description": "Login User Here",
+                "operationId": "authLogin",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "title": "LoginForm",
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "user@example.com"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "로그인 성공",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "권한이 없음",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "passport": {
+                "type": "oauth2",
+                "description": "Laravel passport oauth2 security.",
+                "in": "header",
+                "scheme": "https",
+                "flows": {
+                    "password": {
+                        "authorizationUrl": "http://localhost:8000/oauth/authorize",
+                        "tokenUrl": "http://localhost:8000/oauth/token",
+                        "refreshUrl": "http://localhost:8000/token/refresh",
+                        "scopes": []
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
