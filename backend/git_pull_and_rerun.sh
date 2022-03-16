@@ -19,6 +19,6 @@ docker exec php__1 bash -ce "cd /data/site_projects/php__1/site_projects/laravel
 docker exec php__1 bash -ce "cd /data/site_projects/php__1/site_projects/laravel-taling/backend/ ; composer install"
 
 # 마이그레이트
-docker exec php__1 bash -ce "cd /data/site_projects/php__1/site_projects/laravel-taling/backend/ ; php artisan migrate"
+docker exec php__1 bash -ce "cd /data/site_projects/php__1/site_projects/laravel-taling/backend/ ; php artisan migrate --force"
 
 exit 0
