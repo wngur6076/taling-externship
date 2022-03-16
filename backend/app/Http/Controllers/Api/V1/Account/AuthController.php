@@ -44,7 +44,6 @@ class AuthController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|confirmed',
         ]);
-        dd('saas');
 
         $data = $request->all();
         $data['password'] = Hash::make($data['password']);

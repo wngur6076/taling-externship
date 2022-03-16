@@ -21,4 +21,6 @@ docker exec php__1 bash -ce "cd /data/site_projects/php__1/site_projects/laravel
 # 마이그레이트
 docker exec php__1 bash -ce "cd /data/site_projects/php__1/site_projects/laravel-taling/backend/ ; php artisan migrate --force"
 
+# 스웨거 생성
+docker exec php__1 bash -ce "cd /data/site_projects/php__1/site_projects/laravel-taling/backend/ ; php artisan l5-swagger:generate"
 exit 0
